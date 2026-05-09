@@ -29,22 +29,61 @@
   h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; color: var(--wood-dark); line-height: 1.2; }
   .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-  /* ===== HEADER ===== */
-  header.site-head { background: var(--wood-dark); color: var(--cream); padding: 18px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+  /* ===== HEADER (matches landing page nav — cream paper, blurred) ===== */
+  header.site-head {
+    background: rgba(251, 246, 236, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--ink);
+    padding: 18px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--line);
+  }
   .head-inner { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-  .brand { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 20px; color: var(--cream); display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .brand-mark { width: 32px; height: 32px; background: var(--copper); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
-  .brand-mark svg { width: 18px; height: 18px; }
-  .head-right { display: flex; align-items: center; gap: 18px; font-size: 14px; }
-  .head-right .welcome { color: var(--kraft); }
-  .head-right a { color: var(--kraft); text-decoration: none; }
-  .head-right a:hover { color: var(--copper-bright); }
+  .brand { display: inline-flex; align-items: center; text-decoration: none; }
+  .brand-logo { display: block; height: 36px; width: auto; }
+  @media (max-width: 540px) { .brand-logo { height: 28px; } }
+  .head-right { display: flex; align-items: center; gap: 22px; font-size: 14px; }
+  .head-right .welcome { color: var(--ink-soft); }
+  .head-right a { color: var(--ink-soft); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+  .head-right a:hover { color: var(--wood-dark); }
 
-  /* ===== HERO BANNER ===== */
-  .members-hero { background: linear-gradient(180deg, var(--kraft) 0%, var(--paper) 100%); padding: 60px 0 40px; text-align: center; border-bottom: 1px solid var(--line); }
-  .members-hero .eyebrow { font-family: 'Special Elite', monospace; font-size: 13px; color: var(--copper); text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 12px; }
-  .members-hero h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 12px; }
-  .members-hero p { color: var(--ink-soft); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+  /* ===== HERO BANNER (walnut workbench background) ===== */
+  .members-hero {
+    background-color: var(--wood-dark);
+    background-image:
+      linear-gradient(180deg, rgba(0,0,0,0.42), rgba(0,0,0,0.30) 50%, rgba(0,0,0,0.40) 100%),
+      url('assets/wood-dark.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0 60px;
+    text-align: center;
+    box-shadow: inset 0 -10px 22px rgba(0, 0, 0, 0.45);
+  }
+  .members-hero .eyebrow {
+    font-family: 'Special Elite', monospace;
+    font-size: 13px;
+    color: var(--copper-bright);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 14px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  }
+  .members-hero h1 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 14px;
+    color: var(--cream);
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.65), 0 1px 1px rgba(0, 0, 0, 0.5);
+  }
+  .members-hero p {
+    color: var(--kraft);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+  }
 
   /* ===== TOOLBAR ===== */
   .toolbar { background: var(--cream); border-bottom: 1px solid var(--line); padding: 18px 0; position: sticky; top: 68px; z-index: 50; backdrop-filter: blur(6px); }
@@ -134,8 +173,7 @@
 <header class="site-head">
   <div class="head-inner">
     <a href="#" class="brand">
-      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#FAF3E7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l3-3 9-9 3 3-9 9-3 3z"/><path d="M14 7l3 3"/><path d="M17 4l3 3"/></svg></span>
-      Wooden Blueprints
+      <img src="assets/logo-horizontal.png" alt="Wooden Blueprints" class="brand-logo" />
     </a>
     <div class="head-right">
       <span class="welcome">Welcome back</span>
