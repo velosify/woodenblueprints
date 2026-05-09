@@ -52,9 +52,9 @@
     border-bottom: 1px solid var(--line);
   }
   .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; max-width: 1140px; margin: 0 auto; }
-  .brand { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 22px; color: var(--wood-dark); letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; }
-  .brand-mark { width: 32px; height: 32px; background: var(--wood-dark); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
-  .brand-mark svg { width: 20px; height: 20px; }
+  .brand { display: inline-flex; align-items: center; text-decoration: none; }
+  .brand-logo { display: block; height: 38px; width: auto; }
+  @media (max-width: 540px) { .brand-logo { height: 30px; } }
   .nav-links { display: flex; gap: 28px; align-items: center; }
   .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s; }
   .nav-links a:hover { color: var(--wood-dark); }
@@ -69,6 +69,10 @@
 
   .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: 'Special Elite', monospace; font-size: 13px; color: var(--copper); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px; }
   .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--copper); }
+
+  /* Hero logo */
+  .hero-logo { display: block; width: 100%; max-width: 480px; height: auto; margin: 0 0 32px; filter: drop-shadow(0 12px 24px rgba(62, 42, 20, 0.18)) drop-shadow(0 4px 8px rgba(62, 42, 20, 0.08)); }
+  @media (max-width: 900px) { .hero-logo { max-width: 380px; margin: 0 auto 24px; } }
 
   h1.hero-title { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; margin-bottom: 24px; }
   h1.hero-title em { color: var(--copper); font-style: normal; }
@@ -252,6 +256,7 @@
   footer { background: var(--wood-dark); color: var(--kraft); padding: 60px 0 30px; }
   .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
   @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; gap: 30px; } }
+  .footer-brand { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 22px; color: var(--cream); margin-bottom: 14px; letter-spacing: -0.01em; }
   footer h4 { color: var(--cream); font-family: 'Inter', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 14px; }
   footer a { color: var(--kraft); text-decoration: none; display: block; padding: 4px 0; font-size: 0.95rem; }
   footer a:hover { color: var(--copper-bright); }
@@ -267,13 +272,8 @@
 <!-- ============ NAV ============ -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="brand" style="text-decoration:none;">
-      <span class="brand-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#D89441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 21l3-3 9-9 3 3-9 9-3 3z"/><path d="M14 7l3 3"/><path d="M17 4l3 3"/>
-        </svg>
-      </span>
-      Wooden Blueprints
+    <a href="#" class="brand">
+      <img src="assets/logo-horizontal.png" alt="Wooden Blueprints" class="brand-logo" />
     </a>
     <div class="nav-links">
       <a href="#tiers">Plans</a>
@@ -290,7 +290,7 @@
     <div class="hero-grid">
       <div>
         <div class="eyebrow">A Lifetime Collection</div>
-        <h1 class="hero-title">40 Heirloom Blueprints. <em>One Lifetime Price.</em></h1>
+        <h1 class="hero-title">40 Heirloom Plans. <em>One Lifetime Price.</em></h1>
         <p class="hero-sub">Every plan you'll ever need — from your first birdhouse to a Sam Maloof rocker — drawn, dimensioned, and shop-ready. Cut lists, hardware lists, and step-by-step assembly. No subscriptions. No upsells. Just <strong>$49, forever</strong>.</p>
         <div class="cta-row">
           <a href="#pricing" class="btn-primary">
@@ -694,10 +694,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="brand" style="color: var(--cream);">
-          <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#D89441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l3-3 9-9 3 3-9 9-3 3z"/><path d="M14 7l3 3"/><path d="M17 4l3 3"/></svg></span>
-          Wooden Blueprints
-        </div>
+        <div class="footer-brand">Wooden Blueprints</div>
         <p class="footer-tag">Forty heirloom plans, drawn the way the old masters drew them. Built for woodworkers who want to spend more time in the shop and less time scrolling Pinterest.</p>
       </div>
       <div>
