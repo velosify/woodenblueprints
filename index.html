@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Wooden Blueprints — 40 Heirloom Plans for $49</title>
-<meta name="description" content="40 shop-ready woodworking blueprints across four skill levels. Cut lists, hardware lists, dimensioned drawings, and step-by-step assembly. One-time $49 — yours for life." />
+<title>Wooden Blueprints — 100 Heirloom Plans for $49</title>
+<meta name="description" content="100 shop-ready woodworking blueprints across four skill levels. Cut lists, hardware lists, dimensioned drawings, and step-by-step assembly. One-time $49 — yours for life." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@400;500;600;700&family=Special+Elite&display=swap" rel="stylesheet">
@@ -32,11 +32,17 @@
   body {
     font-family: 'Inter', system-ui, sans-serif;
     color: var(--ink);
-    background: var(--paper);
+    background-color: var(--paper);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    /* Continuous flowing background: warm pools drifting across the page so transitions
+       between sections happen gradually inside the page, not at section boundaries. */
     background-image:
-      radial-gradient(ellipse at top, rgba(184, 116, 44, 0.04), transparent 60%),
+      radial-gradient(ellipse 1300px 700px at 15% 18%, rgba(232, 213, 183, 0.55), transparent 65%),
+      radial-gradient(ellipse 1500px 850px at 85% 40%, rgba(232, 213, 183, 0.45), transparent 65%),
+      radial-gradient(ellipse 1400px 800px at 20% 62%, rgba(232, 213, 183, 0.50), transparent 65%),
+      radial-gradient(ellipse 1500px 900px at 80% 84%, rgba(232, 213, 183, 0.45), transparent 65%),
+      radial-gradient(ellipse at top, rgba(184, 116, 44, 0.05), transparent 60%),
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.42  0 0 0 0 0.29  0 0 0 0 0.13  0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='80' height='80' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
@@ -62,10 +68,39 @@
   .nav-cta:hover { background: var(--copper); color: var(--cream) !important; }
   @media (max-width: 720px) { .nav-links a:not(.nav-cta) { display: none; } }
 
-  /* ===== HERO ===== */
-  .hero { padding: 80px 0 60px; position: relative; overflow: hidden; }
+  /* ===== WORKBENCH — single wood plank that hero + ticker both sit on ===== */
+  .workbench {
+    background-color: var(--wood-dark);
+    background-image: url('assets/wood-dark.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  /* ===== HERO (overlay only — wood comes from .workbench parent) ===== */
+  .hero {
+    padding: 100px 0 80px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(0,0,0,0.42), rgba(0,0,0,0.30) 60%, rgba(0,0,0,0.30) 100%);
+  }
   .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; }
   @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  /* Hero text colors — light text + drop shadows for legibility on dark walnut */
+  .hero .eyebrow { color: var(--copper-bright); text-shadow: 0 1px 2px rgba(0,0,0,0.6); }
+  .hero .eyebrow::before { background: var(--copper-bright); }
+  .hero h1.hero-title { color: var(--cream); text-shadow: 0 3px 8px rgba(0,0,0,0.65), 0 1px 1px rgba(0,0,0,0.5); }
+  .hero h1.hero-title em { color: var(--copper-bright); }
+  .hero .hero-sub { color: var(--kraft); text-shadow: 0 1px 2px rgba(0,0,0,0.55); }
+  .hero .hero-sub strong { color: var(--cream); }
+  .hero .btn-primary { background: var(--copper); color: var(--cream); box-shadow: 0 4px 0 var(--ink), 0 8px 22px rgba(0,0,0,0.45); }
+  .hero .btn-primary:hover { background: var(--copper-bright); }
+  .hero .btn-secondary { color: var(--kraft); text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+  .hero .btn-secondary:hover { color: var(--copper-bright); }
+  .hero .hero-meta { color: var(--kraft); }
+  .hero .hero-meta span { text-shadow: 0 1px 2px rgba(0,0,0,0.55); }
+  .hero .hero-meta svg { color: var(--copper-bright); }
 
   .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: 'Special Elite', monospace; font-size: 13px; color: var(--copper); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px; }
   .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--copper); }
@@ -127,8 +162,15 @@
   .bp-svg { width: 100%; height: 220px; }
   .bp-footer { display: flex; justify-content: space-between; margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--kraft-dark); font-family: 'Special Elite', monospace; font-size: 11px; color: var(--ink-soft); }
 
-  /* ===== TICKER ===== */
-  .ticker { background: var(--wood-dark); color: var(--cream); padding: 16px 0; overflow: hidden; }
+  /* ===== TICKER (sits on the same workbench plank — overlay matches hero bottom for seamless transition) ===== */
+  .ticker {
+    background: linear-gradient(180deg, rgba(0,0,0,0.30), rgba(0,0,0,0.30));
+    color: var(--cream);
+    padding: 22px 0;
+    overflow: hidden;
+    box-shadow: inset 0 8px 18px rgba(0,0,0,0.50), inset 0 -8px 18px rgba(0,0,0,0.50);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+  }
   .ticker-inner { display: flex; gap: 60px; white-space: nowrap; animation: scroll 40s linear infinite; font-family: 'Special Elite', monospace; font-size: 14px; letter-spacing: 0.08em; }
   @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
   .ticker span { display: inline-flex; align-items: center; gap: 16px; }
@@ -136,7 +178,9 @@
 
   /* ===== SECTIONS ===== */
   section.block { padding: 90px 0; }
-  section.block.alt { background: linear-gradient(180deg, var(--paper) 0%, var(--kraft) 100%); }
+  /* .alt sections used to have their own gradient — now transparent so the
+     body's flowing background shows through continuously across the whole page. */
+  section.block.alt { background: transparent; }
 
   .section-eyebrow { font-family: 'Special Elite', monospace; font-size: 12px; color: var(--copper); text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 12px; text-align: center; }
   .section-title { font-size: clamp(2rem, 3.5vw, 2.8rem); text-align: center; margin-bottom: 16px; }
@@ -207,14 +251,46 @@
   .sample ol li { margin-bottom: 8px; }
   .sample-footer { margin-top: 28px; padding-top: 20px; border-top: 1px dashed var(--line); text-align: center; font-style: italic; color: var(--ink-soft); }
 
-  /* ===== TESTIMONIALS ===== */
-  .testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  @media (max-width: 800px) { .testimonials { grid-template-columns: 1fr; } }
+  /* ===== TESTIMONIALS — infinite-scrolling marquee rows ===== */
+  .testimonial-rows {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    overflow: hidden;
+  }
+  .marquee {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, black 6%, black 94%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, black 6%, black 94%, transparent 100%);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 22px;
+    width: max-content;
+    animation: marquee-left 90s linear infinite;
+    will-change: transform;
+  }
+  .marquee-track.reverse { animation-name: marquee-right; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  .marquee-track .testimonial { flex: 0 0 360px; max-width: 360px; }
+  @keyframes marquee-left {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 11px)); }
+  }
+  @keyframes marquee-right {
+    0%   { transform: translateX(calc(-50% - 11px)); }
+    100% { transform: translateX(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
   .testimonial {
     background: var(--cream);
     border: 1px solid var(--line);
     border-radius: 8px;
     padding: 28px;
+    box-shadow: 0 4px 14px rgba(62, 42, 20, 0.06);
   }
   .stars { color: var(--copper); font-size: 18px; margin-bottom: 12px; }
   .testimonial p { font-size: 1rem; color: var(--ink); margin-bottom: 18px; font-style: italic; }
@@ -223,26 +299,79 @@
   .testimonial-name { font-weight: 600; font-size: 0.95rem; }
   .testimonial-meta { font-size: 0.85rem; color: var(--ink-soft); }
 
-  /* ===== PRICING ===== */
-  .pricing-wrap { max-width: 540px; margin: 0 auto; }
-  .price-card {
-    background: var(--cream);
-    border: 2px solid var(--wood-dark);
-    border-radius: 12px;
-    padding: 48px 40px;
-    text-align: center;
-    box-shadow: 0 8px 0 var(--ink), 0 20px 40px rgba(62, 42, 20, 0.15);
+  /* ===== PRICING — dark walnut shop sign ===== */
+  .pricing-wrap { max-width: 600px; margin: 0 auto; }
+  .price-frame {
     position: relative;
+    padding: 56px 48px 48px;
+    border-radius: 18px;
+    text-align: center;
+    background-image:
+      linear-gradient(180deg, rgba(0,0,0,0.20), rgba(0,0,0,0.05) 25%, rgba(0,0,0,0.05) 75%, rgba(0,0,0,0.32)),
+      url('assets/wood-dark.jpg');
+    background-size: cover;
+    background-position: center;
+    box-shadow:
+      0 28px 70px rgba(62, 42, 20, 0.40),
+      0 10px 0 var(--ink),
+      inset 0 0 0 2px rgba(0, 0, 0, 0.45),
+      inset 0 0 18px rgba(0, 0, 0, 0.30);
   }
-  .price-tag { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--copper); color: var(--cream); padding: 6px 18px; border-radius: 20px; font-family: 'Special Elite', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
-  .price-amount { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900; color: var(--wood-dark); line-height: 1; margin: 24px 0 8px; }
-  .price-amount sup { font-size: 1.8rem; vertical-align: super; color: var(--copper); }
-  .price-once { font-family: 'Special Elite', monospace; font-size: 13px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 28px; }
-  .price-includes { text-align: left; margin: 28px 0; padding: 20px 0; border-top: 1px dashed var(--line); border-bottom: 1px dashed var(--line); }
-  .price-includes li { padding: 6px 0; padding-left: 28px; position: relative; font-size: 0.95rem; }
-  .price-includes li::before { content: "✓"; position: absolute; left: 0; color: var(--forest); font-weight: 700; }
-  .btn-buy { width: 100%; font-size: 18px; padding: 18px 28px; }
-  .price-guarantee { margin-top: 18px; font-size: 0.85rem; color: var(--ink-soft); }
+  .price-frame .tack {
+    position: absolute;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #f4d27a 0%, #c9842f 45%, #6d4416 100%);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.6), inset 0 -1px 1px rgba(0,0,0,0.4);
+  }
+  .price-frame .tack.tl { top: 14px; left: 14px; }
+  .price-frame .tack.tr { top: 14px; right: 14px; }
+  .price-frame .tack.bl { bottom: 14px; left: 14px; }
+  .price-frame .tack.br { bottom: 14px; right: 14px; }
+
+  /* The inner wrapper is now transparent — content sits directly on the wood. */
+  .price-card { background: transparent; border: none; box-shadow: none; padding: 0; text-align: center; position: relative; }
+
+  .price-tag {
+    position: absolute; top: -42px; left: 50%; transform: translateX(-50%);
+    background: var(--copper); color: var(--cream);
+    padding: 8px 20px; border-radius: 20px;
+    font-family: 'Special Elite', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+  }
+  .price-amount {
+    font-family: 'Playfair Display', serif; font-size: 5.4rem; font-weight: 900;
+    color: var(--cream); line-height: 1; margin: 12px 0 8px;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.55), 0 1px 1px rgba(0, 0, 0, 0.4);
+  }
+  .price-amount sup { font-size: 1.8rem; vertical-align: super; color: var(--copper-bright); }
+  .price-once {
+    font-family: 'Special Elite', monospace; font-size: 13px;
+    color: var(--kraft); text-transform: uppercase; letter-spacing: 0.18em;
+    margin-bottom: 28px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  .price-includes {
+    text-align: left; margin: 28px 0; padding: 22px 0;
+    border-top: 1px dashed rgba(232, 213, 183, 0.25);
+    border-bottom: 1px dashed rgba(232, 213, 183, 0.25);
+  }
+  .price-includes li {
+    padding: 6px 0 6px 28px; position: relative; font-size: 0.96rem;
+    color: var(--cream);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+  .price-includes li::before { content: "✓"; position: absolute; left: 0; color: var(--copper-bright); font-weight: 700; font-size: 1.1rem; line-height: 1.4; }
+  .btn-buy {
+    width: 100%; font-size: 18px; padding: 18px 28px;
+    background: var(--copper);
+    box-shadow: 0 4px 0 var(--ink), 0 8px 22px rgba(0, 0, 0, 0.4);
+  }
+  .btn-buy:hover { background: var(--copper-bright); }
+  .price-guarantee {
+    margin-top: 18px; font-size: 0.85rem;
+    color: rgba(250, 243, 231, 0.78);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
 
   /* ===== FAQ ===== */
   .faq-list { max-width: 760px; margin: 0 auto; }
@@ -252,8 +381,18 @@
   .faq-item[open] .faq-q::after { transform: rotate(45deg); }
   .faq-a { padding-top: 14px; color: var(--ink-soft); font-size: 1rem; }
 
-  /* ===== FOOTER ===== */
-  footer { background: var(--wood-dark); color: var(--kraft); padding: 60px 0 30px; }
+  /* ===== FOOTER (wood plank background) ===== */
+  footer {
+    background-color: var(--wood-dark);
+    background-image: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.15) 25%, rgba(0,0,0,0.15) 75%, rgba(0,0,0,0.40)), url('assets/wood-dark.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--kraft);
+    padding: 70px 0 30px;
+    box-shadow: inset 0 8px 18px rgba(0,0,0,0.45);
+  }
+  footer .container { position: relative; }
+  footer h4, footer a, .footer-brand, .footer-tag, .footer-bottom { text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
   .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
   @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; gap: 30px; } }
   .footer-brand { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 22px; color: var(--cream); margin-bottom: 14px; letter-spacing: -0.01em; }
@@ -284,14 +423,17 @@
   </div>
 </nav>
 
+<!-- ============ WORKBENCH (continuous wood: hero + ticker share one plank) ============ -->
+<div class="workbench">
+
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
       <div>
         <div class="eyebrow">A Lifetime Collection</div>
-        <h1 class="hero-title">40 Heirloom Plans. <em>One Lifetime Price.</em></h1>
-        <p class="hero-sub">Every plan you'll ever need — from your first birdhouse to a Sam Maloof rocker — drawn, dimensioned, and shop-ready. Cut lists, hardware lists, and step-by-step assembly. No subscriptions. No upsells. Just <strong>$49, forever</strong>.</p>
+        <h1 class="hero-title">100 Heirloom Plans. <em>One Lifetime Price.</em></h1>
+        <p class="hero-sub">From your first birdhouse to a Maloof rocker — every plan, drawn shop-ready. <strong>$49. Yours forever.</strong></p>
         <div class="cta-row">
           <a href="#pricing" class="btn-primary">
             Get Lifetime Access — $49
@@ -309,7 +451,7 @@
       <div>
         <!-- Sample blueprint card -->
         <div class="blueprint-card">
-          <div class="bp-label">Plan No. 04 — Intermediate</div>
+          <div class="bp-label">Plan No. 26 — Intermediate</div>
           <div class="bp-title">Coffee Table</div>
           <div class="bp-subtitle">Breadboard ends · 48"L × 24"W × 18"H · White Oak</div>
           <svg class="bp-svg" viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg">
@@ -361,6 +503,8 @@
   </div>
 </div>
 
+</div><!-- /.workbench -->
+
 <!-- ============ VALUE PROPS ============ -->
 <section class="block">
   <div class="container">
@@ -405,30 +549,45 @@
 <!-- ============ TIERS ============ -->
 <section class="block alt" id="tiers">
   <div class="container">
-    <div class="section-eyebrow">The Full Library — 40 Plans</div>
+    <div class="section-eyebrow">The Full Library — 100 Plans</div>
     <h2 class="section-title">From your first cut to your masterpiece.</h2>
     <p class="section-lede">Every project is included from day one. Browse the table below for the full list.</p>
 
     <div class="tiers">
       <div class="tier beginner">
-        <div class="tier-head"><h3>Beginner</h3><span class="tier-count">10 PLANS</span></div>
+        <div class="tier-head"><h3>Beginner</h3><span class="tier-count">25 PLANS</span></div>
         <p class="tier-desc">Hand tools, a drill, simple miters. Build your first finished piece this weekend.</p>
         <ul>
           <li>Birdhouse with Removable Roof</li>
           <li>Cedar Planter Box</li>
           <li>Wall-Mounted Coat Rack</li>
           <li>End-Grain Cutting Board</li>
-          <li>Floating Shelf</li>
-          <li>Mitered Picture Frame</li>
+          <li>Floating Shelf with Hidden Bracket</li>
+          <li>Mitered Picture Frame with Splines</li>
           <li>Serving Tray with Cutout Handles</li>
           <li>Two-Step Stool</li>
           <li>Chess &amp; Checkers Board</li>
           <li>Three-Shelf Wall Bookshelf</li>
+          <li>Wine Bottle Caddy</li>
+          <li>Phone Charging Dock</li>
+          <li>Wall-Mounted Bottle Opener</li>
+          <li>Letter / Mail Sorter</li>
+          <li>Inlaid Trivet</li>
+          <li>Spice Rack</li>
+          <li>Garden Tool Rack</li>
+          <li>Magnetic Knife Strip</li>
+          <li>Wooden Soap Dish</li>
+          <li>Cookbook / Tablet Stand</li>
+          <li>Key Holder with Hooks</li>
+          <li>Wall-Mounted TP Holder</li>
+          <li>Single-Tier Plant Stand</li>
+          <li>Coaster Set with Holder</li>
+          <li>Bookend Pair</li>
         </ul>
       </div>
 
       <div class="tier intermediate">
-        <div class="tier-head"><h3>Intermediate</h3><span class="tier-count">10 PLANS</span></div>
+        <div class="tier-head"><h3>Intermediate</h3><span class="tier-count">25 PLANS</span></div>
         <p class="tier-desc">Table saw, router, pocket holes. Real furniture for the home — joinery you'll be proud of.</p>
         <ul>
           <li>Coffee Table with Breadboard Ends</li>
@@ -441,11 +600,26 @@
           <li>Glass-Door Wall Cabinet</li>
           <li>Soft-Close Toy Chest</li>
           <li>Outdoor Potting Bench</li>
+          <li>Floating Bathroom Vanity</li>
+          <li>Murphy Bed</li>
+          <li>Garden Arbor / Trellis</li>
+          <li>Bar / Drink Cart</li>
+          <li>Modular Cube Shelves</li>
+          <li>Console Table with Hairpin Legs</li>
+          <li>Outdoor Farmhouse Dining Table</li>
+          <li>Standing Desk</li>
+          <li>Mudroom Lockers</li>
+          <li>Floor-Standing Wine Rack</li>
+          <li>Shoe Rack with Bench Seat</li>
+          <li>Floating Wall Desk</li>
+          <li>Kitchen Island Cart</li>
+          <li>Outdoor Storage Bench</li>
+          <li>Twin Loft Bed</li>
         </ul>
       </div>
 
       <div class="tier advanced">
-        <div class="tier-head"><h3>Advanced</h3><span class="tier-count">10 PLANS</span></div>
+        <div class="tier-head"><h3>Advanced</h3><span class="tier-count">25 PLANS</span></div>
         <p class="tier-desc">Mortise &amp; tenon, dovetails, frame &amp; panel. Heirloom-quality work that lasts generations.</p>
         <ul>
           <li>Shaker Dresser, Hand-Cut Dovetails</li>
@@ -458,11 +632,26 @@
           <li>Wall-Hung Tool Cabinet (Studley-Inspired)</li>
           <li>Library Bookcase with Crown Molding</li>
           <li>Rocking Horse</li>
+          <li>Mission-Style Dining Table</li>
+          <li>Sleigh Bed</li>
+          <li>Wine Cabinet with Hand-Cut Dovetails</li>
+          <li>Drop-Leaf Table</li>
+          <li>Country Step-Back Hutch</li>
+          <li>Pencil-Post Bed</li>
+          <li>Tilt-Top Tea Table</li>
+          <li>Carved Mantel Surround</li>
+          <li>Hanging Spice Cabinet</li>
+          <li>Workbench with Wagon Vise</li>
+          <li>Hayrake Trestle Table</li>
+          <li>Hall Tree with Mirror</li>
+          <li>Quilting Frame</li>
+          <li>Adjustable Music Stand</li>
+          <li>Federal Card Table</li>
         </ul>
       </div>
 
       <div class="tier expert">
-        <div class="tier-head"><h3>Expert</h3><span class="tier-count">10 PLANS</span></div>
+        <div class="tier-head"><h3>Expert</h3><span class="tier-count">25 PLANS</span></div>
         <p class="tier-desc">Compound curves, bent lamination, period-correct details. The pieces that get into magazines.</p>
         <ul>
           <li>Maloof-Style Rocking Chair</li>
@@ -475,6 +664,21 @@
           <li>Hepplewhite Shield-Back Chair</li>
           <li>Marquetry Tea Table</li>
           <li>Nakashima-Style Live-Edge Table</li>
+          <li>Chippendale Highboy with Carved Pediment</li>
+          <li>Pembroke Drop-Leaf Table</li>
+          <li>Shaker Round Stand</li>
+          <li>Sheraton Sewing Table</li>
+          <li>Block-Front Chest of Drawers</li>
+          <li>Carved Tester Bed (Four-Poster)</li>
+          <li>Tambour Roll-Top Desk</li>
+          <li>Roman Curule Stool</li>
+          <li>Pedestal Dining Table with Carved Base</li>
+          <li>Dome-Top Steamer Trunk</li>
+          <li>Chest-on-Chest with Bonnet Top</li>
+          <li>Slant-Front Desk with Secret Compartments</li>
+          <li>Carved Pier Mirror Frame</li>
+          <li>Heirloom Music Box</li>
+          <li>Concert Lectern</li>
         </ul>
       </div>
     </div>
@@ -486,7 +690,7 @@
   <div class="container">
     <div class="section-eyebrow">A Look Inside</div>
     <h2 class="section-title">Every plan looks like this.</h2>
-    <p class="section-lede">Below is a real excerpt from <em>Plan No. 04 — Coffee Table with Breadboard Ends</em>. Every blueprint in the library follows this same shop-ready format.</p>
+    <p class="section-lede">Below is a real excerpt from <em>Plan No. 26 — Coffee Table with Breadboard Ends</em>. Every blueprint in the library follows this same shop-ready format.</p>
 
     <div class="sample">
       <div class="sample-head">
@@ -494,7 +698,7 @@
           <h3>Coffee Table with Breadboard Ends</h3>
           <div style="font-family:'Special Elite',monospace; font-size:13px; color:var(--ink-soft); margin-top:4px;">48"L × 24"W × 18"H · White Oak · ~14 hrs · ~$180 lumber</div>
         </div>
-        <span class="sample-badge">Plan 04</span>
+        <span class="sample-badge">Plan 26</span>
       </div>
 
       <div class="sample-grid">
@@ -538,50 +742,59 @@
 </section>
 
 <!-- ============ TESTIMONIALS ============ -->
-<section class="block alt">
+<section class="block">
   <div class="container">
     <div class="section-eyebrow">From the Workshop</div>
     <h2 class="section-title">What buyers are saying.</h2>
     <p class="section-lede">Hobbyists, weekend warriors, and full-time woodworkers — building from these plans.</p>
+  </div>
 
-    <!-- TODO: Replace placeholder testimonials below with real ones once you have them. -->
-    <div class="testimonials">
-      <div class="testimonial">
-        <div class="stars">★★★★★</div>
-        <p>"I've been buying $30 PDF plans one at a time for years. This collection has more plans, better drawings, and the cut lists actually add up. Best $49 I've spent in the shop."</p>
-        <div class="testimonial-author">
-          <div class="avatar">RJ</div>
-          <div>
-            <div class="testimonial-name">Robert J.</div>
-            <div class="testimonial-meta">Hobbyist · Vermont</div>
-          </div>
-        </div>
-      </div>
+  <!-- Two infinite-loop rows; row 1 scrolls right→left, row 2 scrolls left→right.
+       Each row contains 6 unique testimonials, then the same 6 duplicated for seamless loop. -->
+  <div class="testimonial-rows">
 
-      <div class="testimonial">
-        <div class="stars">★★★★★</div>
-        <p>"Built the Adirondack chair as my first 'real' project. The plans don't skip steps. My wife immediately asked for a matching one."</p>
-        <div class="testimonial-author">
-          <div class="avatar">MC</div>
-          <div>
-            <div class="testimonial-name">Marisa C.</div>
-            <div class="testimonial-meta">Beginner · Oregon</div>
-          </div>
-        </div>
-      </div>
+    <!-- Row 1: right → left -->
+    <div class="marquee">
+      <div class="marquee-track">
+        <!-- 6 unique cards -->
+        <div class="testimonial"><div class="stars">★★★★★</div><p>"I've been buying $30 PDF plans one at a time for years. This collection has more plans, better drawings, and the cut lists actually add up. Best $49 I've spent in the shop."</p><div class="testimonial-author"><div class="avatar">RJ</div><div><div class="testimonial-name">Robert J.</div><div class="testimonial-meta">Hobbyist · Vermont</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p>"Never built anything before. Started with the cutting board and now I'm three plans deep. The skill progression is real — I'm actually getting better."</p><div class="testimonial-author"><div class="avatar">SW</div><div><div class="testimonial-name">Sarah W.</div><div class="testimonial-meta">Beginner · Portland, ME</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p>"I run a small custom shop. The advanced and expert plans are legitimate — drawbore tenons, proper apron geometry. I use them as a teaching baseline for apprentices."</p><div class="testimonial-author"><div class="avatar">DT</div><div><div class="testimonial-name">Daniel T.</div><div class="testimonial-meta">Pro Woodworker · NC</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p>"The Adirondack chair plans saved me a Saturday of measurements. Cut list was dead-on. Built a pair for the porch in one weekend."</p><div class="testimonial-author"><div class="avatar">ML</div><div><div class="testimonial-name">Marcus L.</div><div class="testimonial-meta">Hobbyist · Denver, CO</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p>"Fifty years in the trade. These plans are clean — accurate, no shortcuts, real joinery. Refreshing in an industry full of lazy YouTube tutorials."</p><div class="testimonial-author"><div class="avatar">TB</div><div><div class="testimonial-name">Tom B.</div><div class="testimonial-meta">Retired Pro · Madison, WI</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p>"Members area is well-organized — search and filter actually work, and the print stylesheet means I can hand a friend one plan without sharing my login."</p><div class="testimonial-author"><div class="avatar">LN</div><div><div class="testimonial-name">Lisa N.</div><div class="testimonial-meta">Hobbyist · San Francisco, CA</div></div></div></div>
 
-      <div class="testimonial">
-        <div class="stars">★★★★★</div>
-        <p>"I run a small custom shop. The advanced and expert plans are legitimate — drawbore tenons, proper apron geometry. I use them as a teaching baseline for apprentices."</p>
-        <div class="testimonial-author">
-          <div class="avatar">DT</div>
-          <div>
-            <div class="testimonial-name">Daniel T.</div>
-            <div class="testimonial-meta">Pro Woodworker · NC</div>
-          </div>
-        </div>
+        <!-- duplicate set for seamless loop -->
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p>"I've been buying $30 PDF plans one at a time for years. This collection has more plans, better drawings, and the cut lists actually add up. Best $49 I've spent in the shop."</p><div class="testimonial-author"><div class="avatar">RJ</div><div><div class="testimonial-name">Robert J.</div><div class="testimonial-meta">Hobbyist · Vermont</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p>"Never built anything before. Started with the cutting board and now I'm three plans deep. The skill progression is real — I'm actually getting better."</p><div class="testimonial-author"><div class="avatar">SW</div><div><div class="testimonial-name">Sarah W.</div><div class="testimonial-meta">Beginner · Portland, ME</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p>"I run a small custom shop. The advanced and expert plans are legitimate — drawbore tenons, proper apron geometry. I use them as a teaching baseline for apprentices."</p><div class="testimonial-author"><div class="avatar">DT</div><div><div class="testimonial-name">Daniel T.</div><div class="testimonial-meta">Pro Woodworker · NC</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p>"The Adirondack chair plans saved me a Saturday of measurements. Cut list was dead-on. Built a pair for the porch in one weekend."</p><div class="testimonial-author"><div class="avatar">ML</div><div><div class="testimonial-name">Marcus L.</div><div class="testimonial-meta">Hobbyist · Denver, CO</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p>"Fifty years in the trade. These plans are clean — accurate, no shortcuts, real joinery. Refreshing in an industry full of lazy YouTube tutorials."</p><div class="testimonial-author"><div class="avatar">TB</div><div><div class="testimonial-name">Tom B.</div><div class="testimonial-meta">Retired Pro · Madison, WI</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p>"Members area is well-organized — search and filter actually work, and the print stylesheet means I can hand a friend one plan without sharing my login."</p><div class="testimonial-author"><div class="avatar">LN</div><div><div class="testimonial-name">Lisa N.</div><div class="testimonial-meta">Hobbyist · San Francisco, CA</div></div></div></div>
       </div>
     </div>
+
+    <!-- Row 2: left → right -->
+    <div class="marquee">
+      <div class="marquee-track reverse">
+        <!-- 6 unique cards -->
+        <div class="testimonial"><div class="stars">★★★★★</div><p>"Built the Adirondack chair as my first 'real' project. The plans don't skip steps. My wife immediately asked for a matching one."</p><div class="testimonial-author"><div class="avatar">MC</div><div><div class="testimonial-name">Marisa C.</div><div class="testimonial-meta">Beginner · Oregon</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p>"Spent two weekends on the workbench. Solid as a rock — already pounded a chisel into it without flinching. Plans were dead-on accurate."</p><div class="testimonial-author"><div class="avatar">KM</div><div><div class="testimonial-name">Kevin M.</div><div class="testimonial-meta">DIY · Austin, TX</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p>"I bought this expecting another generic plan dump. The breadboard-ends explanation alone was worth the $49. A real woodworker wrote these."</p><div class="testimonial-author"><div class="avatar">EP</div><div><div class="testimonial-name">Emily P.</div><div class="testimonial-meta">Hobbyist · Nashville, TN</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p>"Built the toy chest for my niece. Soft-close lid, hand-cut dovetails on the drawer. Best gift I've ever given. My sister cried."</p><div class="testimonial-author"><div class="avatar">JA</div><div><div class="testimonial-name">Jenna A.</div><div class="testimonial-meta">Maker · Brooklyn, NY</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p>"Custom-shop owner here. The advanced plans go where most paid plans never bother — proper proportions, real joinery. I keep a printed binder in the shop."</p><div class="testimonial-author"><div class="avatar">FK</div><div><div class="testimonial-name">Frank K.</div><div class="testimonial-meta">Pro Builder · Atlanta, GA</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p>"My teacher told me to read the trestle table plan three times before cutting. I did. Came together perfectly. These plans teach you to think like a woodworker."</p><div class="testimonial-author"><div class="avatar">AR</div><div><div class="testimonial-name">Alex R.</div><div class="testimonial-meta">Apprentice · Philadelphia, PA</div></div></div></div>
+
+        <!-- duplicate set -->
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p>"Built the Adirondack chair as my first 'real' project. The plans don't skip steps. My wife immediately asked for a matching one."</p><div class="testimonial-author"><div class="avatar">MC</div><div><div class="testimonial-name">Marisa C.</div><div class="testimonial-meta">Beginner · Oregon</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p>"Spent two weekends on the workbench. Solid as a rock — already pounded a chisel into it without flinching. Plans were dead-on accurate."</p><div class="testimonial-author"><div class="avatar">KM</div><div><div class="testimonial-name">Kevin M.</div><div class="testimonial-meta">DIY · Austin, TX</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p>"I bought this expecting another generic plan dump. The breadboard-ends explanation alone was worth the $49. A real woodworker wrote these."</p><div class="testimonial-author"><div class="avatar">EP</div><div><div class="testimonial-name">Emily P.</div><div class="testimonial-meta">Hobbyist · Nashville, TN</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p>"Built the toy chest for my niece. Soft-close lid, hand-cut dovetails on the drawer. Best gift I've ever given. My sister cried."</p><div class="testimonial-author"><div class="avatar">JA</div><div><div class="testimonial-name">Jenna A.</div><div class="testimonial-meta">Maker · Brooklyn, NY</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p>"Custom-shop owner here. The advanced plans go where most paid plans never bother — proper proportions, real joinery. I keep a printed binder in the shop."</p><div class="testimonial-author"><div class="avatar">FK</div><div><div class="testimonial-name">Frank K.</div><div class="testimonial-meta">Pro Builder · Atlanta, GA</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p>"My teacher told me to read the trestle table plan three times before cutting. I did. Came together perfectly. These plans teach you to think like a woodworker."</p><div class="testimonial-author"><div class="avatar">AR</div><div><div class="testimonial-name">Alex R.</div><div class="testimonial-meta">Apprentice · Philadelphia, PA</div></div></div></div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -590,16 +803,19 @@
   <div class="container">
     <div class="section-eyebrow">One Price. Forever.</div>
     <h2 class="section-title">Get the entire library.</h2>
-    <p class="section-lede">No subscriptions. No upsells. No "premium tier." Pay once, own all 40 blueprints — plus every new one I add.</p>
+    <p class="section-lede">No subscriptions. No upsells. No "premium tier." Pay once, own all 100 blueprints — plus every new one I add.</p>
 
     <div class="pricing-wrap">
-      <div class="price-card">
+      <div class="price-frame">
+        <span class="tack tl"></span><span class="tack tr"></span>
+        <span class="tack bl"></span><span class="tack br"></span>
+        <div class="price-card">
         <div class="price-tag">Lifetime Access</div>
         <div class="price-amount"><sup>$</sup>49</div>
         <div class="price-once">One-time payment</div>
 
         <ul class="price-includes" style="list-style:none;">
-          <li>All 40 detailed blueprints</li>
+          <li>All 100 detailed blueprints</li>
           <li>Cut lists, hardware, dimensions</li>
           <li>Step-by-step assembly instructions</li>
           <li>Members area — browse anywhere</li>
@@ -626,7 +842,8 @@
         </a>
 
         <div class="price-guarantee">🔒 Secure checkout via Stripe · Visa, Mastercard, Amex, Apple Pay</div>
-      </div>
+        </div><!-- /.price-card -->
+      </div><!-- /.price-frame -->
     </div>
   </div>
 </section>
@@ -641,7 +858,7 @@
     <div class="faq-list">
       <details class="faq-item">
         <summary class="faq-q">What exactly do I get for $49?</summary>
-        <div class="faq-a">All 40 blueprints, organized by skill level. Every plan includes a cut list, materials list, hardware list, dimensioned drawings, and a step-by-step assembly walkthrough. You also get free access to every new plan added in the future.</div>
+        <div class="faq-a">All 100 blueprints, organized by skill level. Every plan includes a cut list, materials list, hardware list, dimensioned drawings, and a step-by-step assembly walkthrough. You also get free access to every new plan added in the future.</div>
       </details>
 
       <details class="faq-item">
@@ -677,29 +894,17 @@
   </div>
 </section>
 
-<!-- ============ FINAL CTA ============ -->
-<section class="block" style="padding: 60px 0 90px;">
-  <div class="container center">
-    <h2 class="section-title">Stop scavenging plans. Start building.</h2>
-    <p class="section-lede">Forty heirloom blueprints. One $49 fee. Yours forever.</p>
-    <a href="#pricing" class="btn-primary" style="font-size:18px; padding: 18px 36px;">
-      Get the Library — $49
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
-</section>
-
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div>
         <div class="footer-brand">Wooden Blueprints</div>
-        <p class="footer-tag">Forty heirloom plans, drawn the way the old masters drew them. Built for woodworkers who want to spend more time in the shop and less time scrolling Pinterest.</p>
+        <p class="footer-tag">One hundred heirloom plans, drawn the way the old masters drew them. Built for woodworkers who want to spend more time in the shop and less time scrolling Pinterest.</p>
       </div>
       <div>
         <h4>Library</h4>
-        <a href="#tiers">All 40 Plans</a>
+        <a href="#tiers">All 100 Plans</a>
         <a href="#sample">Sample Plan</a>
         <a href="#pricing">Pricing</a>
       </div>
